@@ -14,6 +14,7 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public float impactForce = 30f;
     float nextTimeToFire = 0f;
+    AudioSource shotSound;
 
     public LayerMask hitMask;
 
@@ -21,6 +22,7 @@ public class Gun : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        shotSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -44,6 +46,7 @@ public class Gun : MonoBehaviour
     void Shoot()
     {
         muzzleFlash.Play();
+        shotSound.Play();
         animator.SetTrigger("shoot");
         RaycastHit hit;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, hitMask))
