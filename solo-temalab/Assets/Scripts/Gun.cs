@@ -8,6 +8,7 @@ public class Gun : MonoBehaviour
     public float range = 100f;
     public float fireRate = 15f;
     public bool isAutomatic = false;
+    Animator animator;
 
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
@@ -15,9 +16,11 @@ public class Gun : MonoBehaviour
     float nextTimeToFire = 0f;
 
     public LayerMask hitMask;
+
+
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -41,6 +44,7 @@ public class Gun : MonoBehaviour
     void Shoot()
     {
         muzzleFlash.Play();
+        animator.SetTrigger("shoot");
         RaycastHit hit;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, hitMask))
         {
