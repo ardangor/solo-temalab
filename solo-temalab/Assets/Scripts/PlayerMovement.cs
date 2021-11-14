@@ -14,13 +14,12 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     public float jumpHeight = 3.0f;
     public float originalStepoffset;
-    // Start is called before the first frame update
+
     void Start()
     {
         controller.stepOffset = originalStepoffset;
     }
 
-    // Update is called once per frame
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);

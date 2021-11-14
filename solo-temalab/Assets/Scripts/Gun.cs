@@ -12,13 +12,13 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public float impactForce = 30f;
     float nextTimeToFire = 0f;
-    // Start is called before the first frame update
+
+    public LayerMask hitMask;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
@@ -32,7 +32,7 @@ public class Gun : MonoBehaviour
     {
         muzzleFlash.Play();
         RaycastHit hit;
-        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, hitMask))
         {
             Debug.Log(hit.transform.name);
 

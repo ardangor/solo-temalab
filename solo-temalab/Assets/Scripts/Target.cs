@@ -6,16 +6,30 @@ public class Target : MonoBehaviour
 {
     public float health = 50f;
 
-    public void TakeDamage(float amount)
+    public event System.Action OnGetHit;
+    public event System.Action OnDie;
+
+    public bool isDead = false;
+
+    public virtual void TakeDamage(float amount)
     {
         health -= amount;
+        Debug.Log(transform.name + " is taking " + amount + " of damage!");
 
-        if (health <= 0)
+        if (health <= 0 && !isDead)
+        {
+            isDead = true;
             Die();
+        }
+            
+        if (OnGetHit != null)
+            OnGetHit();
     }
 
-    void Die()
+    public virtual void Die()
     {
-        Destroy(gameObject);
+        //Override this in children
+        if (OnDie != null)
+            OnDie();
     }
 }
