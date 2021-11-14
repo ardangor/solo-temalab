@@ -8,7 +8,7 @@ public class EnemyAnimator : MonoBehaviour
     const float locomotionAnimationSmoothTime = 0.1f;
 
     NavMeshAgent agent;
-    Animator animator;
+    public Animator animator;
     EnemyAI combatSystem;
     EnemyTarget selfTarget;
 
@@ -17,7 +17,7 @@ public class EnemyAnimator : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         combatSystem = GetComponent<EnemyAI>();
         selfTarget = GetComponent<EnemyTarget>();
         combatSystem.OnAttack += OnAttack;

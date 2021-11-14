@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     public float attackDelay = 0.6f;
     float nextTimeToAttack = 0;
     public float attackSpeed = 1f;
+    public bool isFlying = false;
 
     public bool inCombat { get; private set; }
     public event System.Action OnAttack;
@@ -32,7 +33,7 @@ public class EnemyAI : MonoBehaviour
             float distance = Vector3.Distance(target.position, transform.position);
 
             RaycastHit hit;
-            if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), transform.forward, out hit, 10f, hitMask))
+            if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), transform.forward, out hit, 10f, hitMask) || isFlying)
             {
                 if (distance <= selfAgent.stoppingDistance)
                 {

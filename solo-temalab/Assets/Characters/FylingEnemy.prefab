@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 402520845332574826}
   - component: {fileID: 402520845332574827}
   - component: {fileID: 402520845332574824}
+  - component: {fileID: 342931671166394193}
   m_Layer: 8
   m_Name: FylingEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +51,7 @@ NavMeshAgent:
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 360
-  m_StoppingDistance: 8
+  m_StoppingDistance: 6
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -73,6 +74,7 @@ MonoBehaviour:
   damage: 10
   attackDelay: 0.6
   attackSpeed: 1
+  isFlying: 1
   hitMask:
     serializedVersion: 2
     m_Bits: 128
@@ -119,6 +121,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &342931671166394193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402520845332574806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2392aa52f03796458697a44d5c6870a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 343605303367151321}
 --- !u!1001 &402520846506302457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -267,5 +282,10 @@ PrefabInstance:
 --- !u!4 &398044595553907773 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4549644435828676, guid: c717f817a496cf247a92b830b355a407, type: 3}
+  m_PrefabInstance: {fileID: 402520846506302457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &343605303367151321 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95333843763016992, guid: c717f817a496cf247a92b830b355a407, type: 3}
   m_PrefabInstance: {fileID: 402520846506302457}
   m_PrefabAsset: {fileID: 0}
