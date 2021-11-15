@@ -9,15 +9,13 @@ public class Gun : MonoBehaviour
     public float fireRate = 15f;
     public bool isAutomatic = false;
     Animator animator;
-
+    public Transform bulletOrigin;
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public float impactForce = 30f;
     float nextTimeToFire = 0f;
     AudioSource shotSound;
-
     public LayerMask hitMask;
-
 
     void Start()
     {
@@ -48,19 +46,17 @@ public class Gun : MonoBehaviour
         muzzleFlash.Play();
         shotSound.Play();
         animator.SetTrigger("shoot");
+
         RaycastHit hit;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, hitMask))
         {
-            Debug.Log(hit.transform.name);
-            Debug.DrawLine(fpsCam.transform.position, hit.point, Color.red, 5.0f);
-
             Target target = hit.transform.GetComponent<Target>();
 
             if (target != null)
                 target.TakeDamage(damage);
 
             if (hit.rigidbody != null)
-                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                hit.rigidbody.AddForce(-hit.normal * impactForce);         
         }
     }
 }
