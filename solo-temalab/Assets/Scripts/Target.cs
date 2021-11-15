@@ -19,6 +19,15 @@ public class Target : MonoBehaviour
         health = maxHealth;
     }
 
+    public void setHealth(float amount)
+    {
+        Debug.Log("Player has been healed by " + amount + " from " + health + " to " + (health + amount));
+        health += amount;    
+
+        if (health > maxHealth)
+            health = maxHealth;
+    }
+
     public virtual void TakeDamage(float amount)
     {
         health -= amount;
