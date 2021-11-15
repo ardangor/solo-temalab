@@ -28,8 +28,6 @@ public class EnemyAI : MonoBehaviour
     {
         if (!selfTarget.isDead)
         {
-
-
             float distance = Vector3.Distance(target.position, transform.position);
 
             RaycastHit hit;

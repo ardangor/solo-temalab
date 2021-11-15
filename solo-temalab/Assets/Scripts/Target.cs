@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public float health = 50f;
+    public float maxHealth = 50f;
+    float health;
 
     public event System.Action OnGetHit;
     public event System.Action OnDie;
 
     public bool isDead = false;
 
+    public event System.Action<float, float> OnHealthChanged;
+
+    void Start()
+    {
+        health = maxHealth;
+    }
+
     public virtual void TakeDamage(float amount)
     {
         health -= amount;
+
+        if(OnHealthChanged != null)
+        {
+            OnHealthChanged(maxHealth, health);
+        }
+
         Debug.Log(transform.name + " is taking " + amount + " of damage!");
 
         if (health <= 0 && !isDead)

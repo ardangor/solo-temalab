@@ -11,15 +11,22 @@ public class WaveSpawner : MonoBehaviour
     public class Wave
     {
         public string waveName;
-        public Transform enemy;
-        public int enemyCount;
+        public EnemyType[] enemies;
         public float spawnRate;
+    }
+
+    [System.Serializable]
+    public class EnemyType
+    {
+        public int enemyCount;
+        public Transform enemy;
     }
 
     public Wave[] waves;
     private int nextWave = 0;
 
     public Transform[] spawnPoints;
+
 
     public float timeBetweenWaves = 5f;
     private float waveCountdown = 0f;
@@ -102,10 +109,13 @@ public class WaveSpawner : MonoBehaviour
     {
         Debug.Log("Spawning wave: " + wave.waveName);
         state = SpawnState.SPAWNING;
-        for (int i = 0; i < wave.enemyCount; i++)
+        for (int i = 0; i < wave.enemies.Length; i++)
         {
-            SpawnEnemy(wave.enemy);
-            yield return new WaitForSeconds(1f / wave.spawnRate);
+            for(int j = 0; j < wave.enemies[i].enemyCount; j++)
+            {
+                SpawnEnemy(wave.enemies[i].enemy);
+                yield return new WaitForSeconds(1f / wave.spawnRate);
+            }              
         }
         state = SpawnState.WAITING;
         yield break;
