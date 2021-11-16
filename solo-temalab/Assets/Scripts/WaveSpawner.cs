@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
     [System.Serializable]
@@ -34,6 +33,9 @@ public class WaveSpawner : MonoBehaviour
     private float searchCountdown = 1f;
 
     private SpawnState state = SpawnState.COUNTING;
+
+    public StartGame startGame;
+    bool gameIsStarted = false;
     void Start()
     {
         if (spawnPoints.Length == 0)
@@ -46,32 +48,42 @@ public class WaveSpawner : MonoBehaviour
             Debug.LogError("No waves created!");
         }
         waveCountdown = timeBetweenWaves;
+        startGame.OnStartGame += OnStart;
+    }
+
+    void OnStart()
+    {
+        gameIsStarted = true;
     }
 
     void Update()
     {
-        if (state == SpawnState.WAITING)
+        if(gameIsStarted)
         {
-            if(!EnemyIsAlive())
+            if (state == SpawnState.WAITING)
             {
-                WaveCompleted();
-            } else
-            {
-                return;
+                if (!EnemyIsAlive())
+                {
+                    WaveCompleted();
+                }
+                else
+                {
+                    return;
+                }
             }
-        }
 
-        if (waveCountdown <= 0)
-        {
-            if(state != SpawnState.SPAWNING)
+            if (waveCountdown <= 0)
             {
-                StartCoroutine(SpawnWave(waves[nextWave]));
-            } 
-        }
-        else
-        {
-            waveCountdown -= Time.deltaTime;
-        }
+                if (state != SpawnState.SPAWNING)
+                {
+                    StartCoroutine(SpawnWave(waves[nextWave]));
+                }
+            }
+            else
+            {
+                waveCountdown -= Time.deltaTime;
+            }
+        }    
     }
 
     void WaveCompleted()

@@ -56,7 +56,12 @@ public class Gun : MonoBehaviour
                 target.TakeDamage(damage);
 
             if (hit.rigidbody != null)
-                hit.rigidbody.AddForce(-hit.normal * impactForce);         
+                hit.rigidbody.AddForce(-hit.normal * impactForce);
+
+            StartGame start = hit.transform.GetComponent<StartGame>();
+
+            if (start != null)
+                start.startGame();
         }
     }
 }

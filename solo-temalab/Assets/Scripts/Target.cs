@@ -26,6 +26,11 @@ public class Target : MonoBehaviour
 
         if (health > maxHealth)
             health = maxHealth;
+
+        if (OnHealthChanged != null)
+        {
+            OnHealthChanged(maxHealth, health);
+        }
     }
 
     public virtual void TakeDamage(float amount)

@@ -14,6 +14,10 @@ public class EnemyAnimator : MonoBehaviour
 
     float hitDelay = 0f;
 
+    public AudioSource idle;
+    public AudioSource attack;
+    public AudioSource die;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -23,6 +27,7 @@ public class EnemyAnimator : MonoBehaviour
         combatSystem.OnAttack += OnAttack;
         selfTarget.OnGetHit += OnGetHit;
         selfTarget.OnDie += Die;
+        idle.Play();
     }
 
     void Update()
@@ -36,7 +41,11 @@ public class EnemyAnimator : MonoBehaviour
     protected virtual void OnAttack()
     {
         if(!selfTarget.isDead)
-            animator.SetTrigger("attack");
+        {
+            attack.Play();
+            animator.SetTrigger("attack");  
+        }
+            
     }
 
     protected virtual void OnGetHit()
@@ -50,6 +59,7 @@ public class EnemyAnimator : MonoBehaviour
 
     protected virtual void Die()
     {
+        die.Play();
         animator.SetTrigger("die");
     }
 }
