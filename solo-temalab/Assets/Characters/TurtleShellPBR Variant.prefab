@@ -1103,7 +1103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  attackDelay: 0.6
+  attackDelay: 0.5
   attackSpeed: 1
   isFlying: 0
   hitMask:
