@@ -14,6 +14,8 @@ public class Target : MonoBehaviour
 
     public event System.Action<float, float> OnHealthChanged;
 
+    public int scoreValue = 10;
+
     void Start()
     {
         health = maxHealth;
@@ -47,6 +49,7 @@ public class Target : MonoBehaviour
         if (health <= 0 && !isDead)
         {
             isDead = true;
+            Score.Instance.addScore(scoreValue);
             Die();
         }
             
