@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponChanging : MonoBehaviour
 {
     private int selectedWeapon = 0;
+
+    public Text ammoCountText;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +38,10 @@ public class WeaponChanging : MonoBehaviour
         foreach(Transform weapon in transform)
         {
             if (i == selectedWeapon)
+            {
                 weapon.gameObject.SetActive(true);
+                ammoCountText.text = "Ammo:" + weapon.GetComponent<Gun>().ammoCount;
+            }               
             else
                 weapon.gameObject.SetActive(false);
 

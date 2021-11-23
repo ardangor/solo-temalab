@@ -64,7 +64,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &402520845332574829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   isDead: 0
+  scoreValue: 10
 --- !u!65 &402520845332574827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -173,8 +174,11 @@ MonoBehaviour:
   droppables:
   - {fileID: 4475904705379548, guid: 3c4c5d66cf736c149bcf5c93ea5603fa, type: 3}
   - {fileID: 4732421097043446, guid: 9e67197f1a146e245876cb153e7385fd, type: 3}
-  - {fileID: 4554513892849508, guid: b5633769281ca0940b368cbed17b7ec0, type: 3}
+  - {fileID: 4000012716797116, guid: 2ce15a1900ef14a459f78260cd05a3dc, type: 3}
   - {fileID: 4542461084504180, guid: a7ad2ea77ce8b7046997418d2425deb3, type: 3}
+  - {fileID: 4000012716797116, guid: 2ce15a1900ef14a459f78260cd05a3dc, type: 3}
+  - {fileID: 4000014292305892, guid: 7af6b07676c52b94ba63b3fa7ff7d0fd, type: 3}
+  - {fileID: 4000013541608862, guid: 3b79e6f8a415f7841a8a55733c4683cd, type: 3}
 --- !u!82 &136672721110209711
 AudioSource:
   m_ObjectHideFlags: 0

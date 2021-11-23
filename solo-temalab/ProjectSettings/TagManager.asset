@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - automatic
+  - pistol
+  - shotgun
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - FlyingEnemy
   - Interactibles
   - Water
-  - 
+  - ThingsOnGround
   - 
   - 
   - 

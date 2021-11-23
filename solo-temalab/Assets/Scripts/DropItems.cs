@@ -16,7 +16,8 @@ public class DropItems : MonoBehaviour
         if(shouldDrop >= 4)
         {
             Vector3 whereToDrop = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
-            Instantiate(droppables[Random.Range(0, droppables.Length)], whereToDrop, transform.rotation);
+            int picked = Random.Range(0, droppables.Length);
+            Instantiate(droppables[picked], whereToDrop, droppables[picked].rotation);
         }
     }
 }
