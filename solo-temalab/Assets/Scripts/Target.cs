@@ -53,7 +53,7 @@ public class Target : MonoBehaviour
             Die();
         }
             
-        if (OnGetHit != null)
+        if (OnGetHit != null && !isDead)
             OnGetHit();
     }
 

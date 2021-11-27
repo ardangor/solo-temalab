@@ -11,19 +11,23 @@ public class AmmoPickUp : MonoBehaviour
     public int amount = 30;
     private void OnTriggerEnter(Collider other)
     {
-       if(pistolAmmo)
+        PlayerTarget target = other.GetComponent<PlayerTarget>();
+        if (target != null)
         {
-            addAmmo("pistol");
-        }
+            if (pistolAmmo)
+            {
+                addAmmo("pistol");
+            }
 
-       if(automaticAmmo)
-        {
-            addAmmo("automatic");
-        }
+            if (automaticAmmo)
+            {
+                addAmmo("automatic");
+            }
 
-       if(shotGunAmmo)
-        {
-            addAmmo("shotgun");
+            if (shotGunAmmo)
+            {
+                addAmmo("shotgun");
+            }
         }
     }
 

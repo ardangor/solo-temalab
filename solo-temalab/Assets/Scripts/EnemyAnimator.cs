@@ -54,7 +54,7 @@ public class EnemyAnimator : MonoBehaviour
         {         
             animator.SetTrigger("hit");
             hitDelay = Time.time + 0.4f;
-        }         
+        }
     }
 
     protected virtual void Die()

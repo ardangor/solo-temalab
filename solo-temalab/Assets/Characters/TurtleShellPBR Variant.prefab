@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   isDead: 0
-  scoreValue: 10
+  scoreValue: 30
 --- !u!114 &3307991034406528179
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   isDead: 0
-  scoreValue: 10
+  scoreValue: 15
 --- !u!65 &402520845332574827
 BoxCollider:
   m_ObjectHideFlags: 0
