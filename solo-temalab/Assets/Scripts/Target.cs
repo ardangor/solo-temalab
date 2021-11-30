@@ -52,9 +52,15 @@ public class Target : MonoBehaviour
             Score.Instance.addScore(scoreValue);
             Die();
         }
-            
+
         if (OnGetHit != null && !isDead)
-            OnGetHit();
+            StartCoroutine(delayedAnimation());
+    }
+
+    IEnumerator delayedAnimation()
+    {
+        yield return new WaitForSeconds(0.1f);
+        OnGetHit();
     }
 
     public virtual void Die()
