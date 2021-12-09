@@ -14,6 +14,6 @@ public class StartGame : MonoBehaviour
             r.isKinematic = false;
         }
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 1.8f);
     }
 }
